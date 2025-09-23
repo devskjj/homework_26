@@ -1,3 +1,13 @@
 1 git init
 2 git status
 3 git add src
+4 git commit prepare project
+5 git add data package with json
+6 git commit data package with json
+7 git add models with classes Movie Actor Director Movies
+8 git commit models
+9 git add Application
+10 git commit Application
+11 git commit project structure
+
+
