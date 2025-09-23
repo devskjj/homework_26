@@ -192,11 +192,11 @@ public class Application {
         Map<String, Set<String>> allActors = new TreeMap<>();
 
         groupMoviesByActorsAndRole(movies, allActors);
-        printActorsAndRoleFromAllMovies(allActors);
+        showActorsAndRoleFromAllMovies(allActors);
         sortForTreeMapReversed(allActors);
     }
 
-    private static void printActorsAndRoleFromAllMovies(Map<String, Set<String>> allActors) {
+    private static void showActorsAndRoleFromAllMovies(Map<String, Set<String>> allActors) {
         System.out.println();
         System.out.println("Список всех актеров из всех фильмов с указанием их ролей, без дубликатов и в отсортированном виде: ");
         System.out.println();
