@@ -1,7 +1,5 @@
 package kg.attractor.java.task2;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,7 +15,7 @@ public final class ActiveCat {
             "Millie", "Daisy", "Jasper", "Misty", "Minka");
     private final String name;
 
-    private MyInterface action;
+    private final MyInterface action;
 
     public ActiveCat(MyInterface action) {
         name = names.get(r.nextInt(names.size()));
