@@ -45,7 +45,7 @@ public class Application {
     private static Movies readJson() {
         Movies movies = null;
         try {
-            String path = new String((Files.readAllBytes(Paths.get("src/data/movies.json"))));
+            String path = new String((Files.readAllBytes(Paths.get("Task3/src/data/movies.json"))));
             Gson gson = new Gson();
             movies = gson.fromJson(path, Movies.class);
         } catch (IOException e) {
