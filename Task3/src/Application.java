@@ -94,13 +94,10 @@ public class Application {
     }
 
     private static void groupMoviesByDirector(List<Movie> movies, Map<String, List<Movie>> directorListMap) {
-        for (Movie movie : movies) {
+        movies.forEach(movie -> {
             String name = movie.getDirector().getFullName();
-            if (!directorListMap.containsKey(name)) {
-                directorListMap.put(name, new ArrayList<>());
-            }
-            directorListMap.get(name).add(movie);
-        }
+            directorListMap.computeIfAbsent(name, var -> new ArrayList<>()).add(movie);
+        });
     }
 
     private static void showMoviesByActorOrDirector(String directorName, Map<String, List<Movie>> directorListMap, String s, String s2) {
