@@ -11,8 +11,11 @@ public class Main {
 
         // А сюда добавьте код, который будет сортировать коллекцию котов
         // используйте лямбда-выражения и ссылки на методы
-         cats.sort(Comparator.comparing(Cat::getBreed));
-         Printer.print(cats);
+        cats.sort(Comparator.comparing(cat -> cat.getBreed().name()));
+        Printer.print(cats);
+
+        cats.sort(Comparator.comparing(Cat::getName).thenComparing(Cat::getAge));
+        Printer.print(cats);
     }
 
 }
