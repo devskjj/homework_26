@@ -64,14 +64,9 @@ public class Application {
     }
 
     private static void groupMovieByActorName(List<Movie> movies, Map<String, List<Movie>> actorListMap) {
-        for (Movie movie : movies) {
-            for (Actor actor : movie.getCast()) {
-                if (!actorListMap.containsKey(actor.getFullName())) {
-                    actorListMap.put(actor.getFullName(), new ArrayList<>());
-                }
-                actorListMap.get(actor.getFullName()).add(movie);
-            }
-        }
+        movies.forEach(movie -> movie.getCast().forEach(actor -> {
+            actorListMap.computeIfAbsent(actor.getFullName(), var -> new ArrayList<>()).add(movie);
+        }));
     }
 
     private static void sortForActorOrDirector(String name, List<Movie> forSort, String s, String s2) {
@@ -197,13 +192,14 @@ public class Application {
         Map<String, Set<String>> allActorsReversed = new TreeMap<>(Comparator.reverseOrder());
         allActorsReversed.putAll(allActors);
 
-        for (Map.Entry<String, Set<String>> entry : allActorsReversed.entrySet()) {
-            System.out.println("Актёр: " + entry.getKey());
-            List<String> forSort = new ArrayList<>(entry.getValue());
+        allActorsReversed.forEach((actor, movies) -> {
+            System.out.println("Актёр: " + actor);
+            List<String> forSort = new ArrayList<>(movies);
             forSort.sort(Comparator.reverseOrder());
+
             forSort.forEach(System.out::println);
             System.out.println();
-        }
+        });
     }
 
     private static void findMovie(Movies movies) {
