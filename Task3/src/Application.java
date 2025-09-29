@@ -162,18 +162,10 @@ public class Application {
     }
 
     private static void groupMoviesAndRoleByActorName(List<Movie> movies, Map<String, List<String>> actorListMap) {
-        for (Movie movie : movies) {
-            for (Actor actor : movie.getCast()) {
-                String actorName = actor.getFullName();
-                String actorRole = actor.getRole();
-                String movieAndRole = movie.getName() + " -- в роли: " + actorRole;
-
-                if (!actorListMap.containsKey(actorName)) {
-                    actorListMap.put(actorName, new ArrayList<>());
-                }
-                actorListMap.get(actorName).add(movieAndRole);
-            }
-        }
+        movies.forEach(movie -> movie.getCast().forEach(actor -> {
+            String role = movie.getName() + " - в роли " + actor.getRole();
+            actorListMap.computeIfAbsent(actor.getFullName(), var -> new ArrayList<>()).add(role);
+        }));
     }
 
     private static void findAllActorsAndRoleFromAllMovies(List<Movie> movies) {
