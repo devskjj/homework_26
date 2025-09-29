@@ -126,13 +126,7 @@ public class Application {
     }
 
     private static void groupMoviesByYear(List<Movie> movies, Map<Integer, List<Movie>> yearListMap) {
-        for (Movie movie : movies) {
-            int yearMovie = movie.getYear();
-            if (!yearListMap.containsKey(yearMovie)) {
-                yearListMap.put(yearMovie, new ArrayList<>());
-            }
-            yearListMap.get(yearMovie).add(movie);
-        }
+        movies.forEach(movie -> yearListMap.computeIfAbsent(movie.getYear(), var -> new ArrayList<>()).add(movie));
     }
 
     private static void sortMoviesByYear(int year, Map<Integer, List<Movie>> yearListMap) {
