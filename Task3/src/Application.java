@@ -163,8 +163,7 @@ public class Application {
 
     private static void groupMoviesAndRoleByActorName(List<Movie> movies, Map<String, List<String>> actorListMap) {
         movies.forEach(movie -> movie.getCast().forEach(actor -> {
-            String role = movie.getName() + " - в роли " + actor.getRole();
-            actorListMap.computeIfAbsent(actor.getFullName(), var -> new ArrayList<>()).add(role);
+            actorListMap.computeIfAbsent(actor.getFullName(), var -> new ArrayList<>()).add(movie.getName() + " - в роли " + actor.getRole());
         }));
     }
 
@@ -188,15 +187,9 @@ public class Application {
     }
 
     private static void groupMoviesByActorsAndRole(List<Movie> movies, Map<String, Set<String>> allActors) {
-        for (Movie movie : movies) {
-            for (Actor actor : movie.getCast()) {
-                String roleInfo = movie.getName() + " -- в роли: " + actor.getRole();
-                if (!allActors.containsKey(actor.getFullName())) {
-                    allActors.put(actor.getFullName(), new TreeSet<>());
-                }
-                allActors.get(actor.getFullName()).add(roleInfo);
-            }
-        }
+        movies.forEach(movie -> movie.getCast().forEach(actor -> {
+            allActors.computeIfAbsent(actor.getFullName(), var -> new TreeSet<>()).add(movie.getName() + " -- в роли: " + actor.getRole());
+        }));
     }
 
     private static void sortForTreeMapReversed(Map<String, Set<String>> allActors) {
