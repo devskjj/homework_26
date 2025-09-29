@@ -6,8 +6,8 @@
 6 git commit data package with json
 7 git add models with classes Movie Actor Director Movies
 8 git commit models
-9 git add Application
-10 git commit Application
+9 git add models.Application
+10 git commit models.Application
 11 git commit project structure
 12 git commit some refactoring
 13 git commit rename method
