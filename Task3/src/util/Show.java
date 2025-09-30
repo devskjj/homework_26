@@ -1,4 +1,6 @@
-package models;
+package util;
+
+import models.Movie;
 
 import java.util.List;
 import java.util.Map;

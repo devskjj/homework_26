@@ -17,10 +17,6 @@ public class Movie implements Comparable<Movie> {
         return year;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public List<Actor> getCast() {
         return cast;
     }

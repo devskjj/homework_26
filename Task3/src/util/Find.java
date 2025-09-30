@@ -1,4 +1,8 @@
-package models;
+package util;
+
+import models.Application;
+import models.Movie;
+import models.Movies;
 
 import java.util.*;
 
